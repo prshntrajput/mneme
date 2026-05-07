@@ -5,7 +5,16 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
+      "env": [
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "GEMINI_API_KEY",
+        "INNGEST_EVENT_KEY",
+        "INNGEST_SIGNING_KEY",
+        "NEXT_PUBLIC_APP_URL"
+      ]
     },
     "dev": {
       "cache": false,
