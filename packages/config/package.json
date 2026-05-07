@@ -1,0 +1,22 @@
+{
+  "name": "@mneme/config",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./eslint/base": "./eslint/base.js",
+    "./eslint/next": "./eslint/next.js",
+    "./eslint/react": "./eslint/react.js",
+    "./typescript/base": "./typescript/base.json",
+    "./typescript/nextjs": "./typescript/nextjs.json",
+    "./typescript/react-library": "./typescript/react-library.json"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "@typescript-eslint/parser": "^8.32.0",
+    "eslint": "^9.26.0",
+    "eslint-config-next": "^16.2.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-import": "^2.31.0"
+  }
+}

@@ -1,0 +1,32 @@
+name: Build Extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build:extension
+        env:
+          VITE_API_URL: https://mneme.app
+          VITE_APP_URL: https://mneme.app
+
+      - name: Package extension
+        run: |
+          cd apps/extension/dist
+          zip -r ../../../mneme-extension-${{ github.ref_name }}.zip .
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mneme-extension-${{ github.ref_name }}
+          path: mneme-extension-${{ github.ref_name }}.zip

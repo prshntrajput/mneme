@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "exactOptionalPropertyTypes": false,
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "incremental": true,
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@mneme/database": ["../../packages/database/src/index.ts"],
+      "@mneme/shared": ["../../packages/shared/src/index.ts"],
+      "@mneme/ai": ["../../packages/ai/src/index.ts"],
+      "@supabase/supabase-js/dist/module/lib/types": ["./src/types/supabase-lib-stub.ts"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,23 +1,33 @@
 {
-  "name": "mneme",
+  "name": "mneme-root",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "npm@10.9.3",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "16.2.5",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=@mneme/web",
+    "dev:extension": "turbo run dev --filter=@mneme/extension",
+    "build": "turbo run build",
+    "build:extension": "turbo run build --filter=@mneme/extension",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,css}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,css}\" --ignore-path .gitignore",
+    "db:types": "supabase gen types typescript --local > packages/database/src/types.generated.ts",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "turbo": "^2.5.2"
   }
 }
